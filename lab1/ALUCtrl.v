@@ -1,6 +1,6 @@
 module ALUCtrl (
     input [1:0] ALUOp,
-    input [6:0]funct7,
+    input funct7,
     input [2:0] funct3,
     output reg [3:0] ALUCtl
 );
@@ -11,3 +11,4 @@ module ALUCtrl (
 
 
 endmodule
+
