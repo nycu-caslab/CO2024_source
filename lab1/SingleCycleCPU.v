@@ -14,13 +14,16 @@ module SingleCycleCPU (
     output signed [31:0] sp
 );
 
+// When input start is zero, cpu should reset
+// When input start is high, cpu start running
+
 // TODO: connect wire to realize SingleCycleCPU
 // The following provides simple template,
 // you can modify it as you wish except I/O pin and register module
 
 PC m_PC(
     .clk(),
-    .rst(),
+    .rst(start),
     .pc_i(),
     .pc_o()
 );
@@ -53,7 +56,7 @@ Control m_Control(
 
 Register m_Register(
     .clk(),
-    .rst(),
+    .rst(start),
     .regWrite(),
     .readReg1(),
     .readReg2(),
@@ -124,7 +127,7 @@ ALU m_ALU(
 );
 
 DataMemory m_DataMemory(
-    .rst(),
+    .rst(start),
     .clk(),
     .memWrite(),
     .memRead(),
