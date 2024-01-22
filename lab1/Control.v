@@ -10,7 +10,6 @@ module Control (
 );
 
     // TODO: implement your Control here
-    // For testbench verifying, Do not modify input and output pin
     // Hint: follow the Architecture (figure in spec) to set output signal
     
 

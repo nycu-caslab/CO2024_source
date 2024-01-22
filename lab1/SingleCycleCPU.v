@@ -14,6 +14,10 @@ module SingleCycleCPU (
     output signed [31:0] sp
 );
 
+// TODO: connect wire to realize SingleCycleCPU
+// The following provides simple template,
+// you can modify it as you wish except I/O pin and register module
+
 PC m_PC(
     .clk(),
     .rst(),
@@ -43,6 +47,10 @@ Control m_Control(
     .regWrite()
 );
 
+// For Student: 
+// Do not change the Register instance name!
+// Or you will fail validation.
+
 Register m_Register(
     .clk(),
     .rst(),
@@ -55,7 +63,8 @@ Register m_Register(
     .readData2()
 );
 
-// ======= for vaildation =======
+// ======= for validation ======= 
+// == Dont change this section ==
 assign t0 = m_Register.regs[5];
 assign t1 = m_Register.regs[6];
 assign t2 = m_Register.regs[7];

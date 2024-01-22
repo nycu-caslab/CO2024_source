@@ -6,7 +6,6 @@ module PC (
 );
 
     // TODO: implement your program counter here
-    // For testbench verifying, Do not modify input and output pin
 
 
 endmodule

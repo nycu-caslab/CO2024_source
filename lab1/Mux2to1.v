@@ -8,7 +8,6 @@ module Mux2to1 #(
     output signed [size-1:0] out
 );
     // TODO: implement your 2to1 multiplexer here
-    // For testbench verifying, Do not modify input and output pin
 
     
 endmodule

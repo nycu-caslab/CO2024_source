@@ -2,6 +2,8 @@ module InstructionMemory (
     input [31:0] readAddr,
     output [31:0] inst
 );
+    // For Student: 
+    // Do not modify this file!
 
     reg [7:0] insts [127:0];
     

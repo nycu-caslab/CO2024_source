@@ -7,6 +7,9 @@ module DataMemory(
 	input [31:0] writeData,
 	output reg [31:0] readData
 );
+	// For Student: 
+	// Do not modify this file!
+
 	reg [7:0] data_memory [127:0];
 	always @ (posedge clk, negedge rst) begin
 		if(!rst) begin
