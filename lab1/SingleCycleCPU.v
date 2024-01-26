@@ -11,7 +11,10 @@ module SingleCycleCPU (
     output signed [31:0] s0,
     output signed [31:0] s1,
     output signed [31:0] s2,
-    output signed [31:0] sp
+    output signed [31:0] sp,
+    output signed [31:0] a0,
+    output signed [31:0] a1,
+    output signed [31:0] ra
 );
 
 // When input start is zero, cpu should reset
@@ -68,11 +71,14 @@ Register m_Register(
 
 // ======= for validation ======= 
 // == Dont change this section ==
+assign ra = m_Register.regs[1];
 assign t0 = m_Register.regs[5];
 assign t1 = m_Register.regs[6];
 assign t2 = m_Register.regs[7];
 assign s0 = m_Register.regs[8];
 assign s1 = m_Register.regs[9];
+assign a0 = m_Register.regs[10];
+assign a1 = m_Register.regs[11];
 assign s2 = m_Register.regs[18];
 assign t3 = m_Register.regs[28];
 assign t4 = m_Register.regs[29];
