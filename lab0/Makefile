@@ -13,4 +13,4 @@ part2:
 .PHONY: clean
 clean:
 	rm -rf obj_dir
-	rm waveform.vcd
+	rm -f waveform.vcd
