@@ -1,8 +1,8 @@
 module alu(
-    input signed [3:0] a,
-    input signed [3:0] b,
+    input [3:0] a,
+    input [3:0] b,
     input [2:0] s,
-    output reg signed [3:0] y
+    output reg [3:0] y
 ); 
     // alu has two input operand a and b.
     // It executes different operation over input a and b based on input s

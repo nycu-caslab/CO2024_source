@@ -12,10 +12,10 @@ vluint64_t sim_time = 0;
 VerilatedVcdC *m_trace = new VerilatedVcdC;
 
 typedef struct{
-   int A : 4;
-   int B : 4;
-   int C : 4;
-   int Y : 4;
+   unsigned int A : 4;
+   unsigned int B : 4;
+   unsigned int C : 4;
+   unsigned int Y : 4;
 }ABC;
 
 
