@@ -32,7 +32,7 @@ These four labs cover some fundamental concepts of CPUs. We will start with the 
 During the implementation of the branch, we will introduce a forwarding unit and hazard detection.
 
 We will provide the following template to serve as a reference for the implementation of these four labs.
-```java
+```c
 ├── lab1
 │   ├── Adder.v
 │   ├── ALUCtrl.v
