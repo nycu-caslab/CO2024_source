@@ -51,7 +51,7 @@ We will provide the following template to serve as a reference for the implement
 │   └── TEST_INSTRUCTIONS.txt // binaries in format of line per byte
 ```
 
-## [Lab-5 : Implementing a Cache Manager](https://nycu-caslab.github.io/CO2024/labs/Lab%205.html)
+## [Lab 5 : Implementing a Cache Manager](https://nycu-caslab.github.io/CO2024/labs/Lab%205.html)
 
 You’ll design a cache manager to manage the cache table and data in cache, we are providing the code of the simulator, but you need to implement the cache manager to finish the lab.
 
