@@ -1,4 +1,4 @@
-This is the repositoriy for Computer Organization 2024, NYCU.
+## This is the repository of Computer Organization 2024, NYCU.
 
 This course aims to introduce the design and implementation of a simple CPU. 
 You’ll learn both concept and implementation from a series of labs.
@@ -28,8 +28,8 @@ The lab 0 aims to enhance your Verilog coding abilities and to provide you with 
 - [Lab 3 : Simple Pipeline CPU](https://nycu-caslab.github.io/CO2024/labs/Lab%203.html)
 - [Lab 4 : Advance Pipeline CPU](https://nycu-caslab.github.io/CO2024/labs/Lab%204.html)
 
-These four labs cover some fundamental concepts of CPUs. We will start with the single-cycle CPU, and a pipelined version. 
-During the implementation of the branch, we will introduce a forwarding unit and hazard detection.
+These four labs cover some fundamental concepts of CPUs. We will start with the single-cycle CPU, and then a pipelined version. 
+During the implementation of the branch instructions of the pipelined version, we will introduce a forwarding unit and hazard detection.
 
 We will provide the following template to serve as a reference for the implementation of these four labs.
 ```java
@@ -53,7 +53,7 @@ We will provide the following template to serve as a reference for the implement
 
 ## [Lab 5 : Implementing a Cache Manager](https://nycu-caslab.github.io/CO2024/labs/Lab%205.html)
 
-You’ll design a cache manager to manage the cache table and data in cache, we are providing the code of the simulator, but you need to implement the cache manager to finish the lab.
+You’ll design a cache manager to manage the cache table and data in cache, we are providing the code of the simulator, but you need to implement the remaining cache manager to finish the lab.
 
 There are no restrictions about the implementation of your cache, and there are no specified block size requirement also. As long as the cache operates correctly, both "Direct Mapped" and "Set Associative Cache" are acceptable. Additionally, you are free to design the Cache replacement policy and update policy as you see fit.
 
@@ -83,7 +83,7 @@ There are no restrictions about the implementation of your cache, and there are 
 
 ## Appendix : Getting Your Lab CPU to Run C
 
-If you are interested in running C on your lab-4 CPU, you can use the kits we provide below and follow the steps and demonstrations shown in the [instructional video](https://drive.google.com/file/d/1nEIGAVXTM3-w0m5Q4jJV8ISoqoSjpM4X/view?usp=sharing).
+If you are interested in running C on your lab-4 CPU, you can use the kits we provide below and follow the steps and demonstrations shown in the [instructional video](https://drive.google.com/file/d/1nEIGAVXTM3-w0m5Q4jJV8ISoqoSjpM4X/view?usp=sharing), the instructions pdf are also provided under the COCPU directory.
 
 Please keep in mind that the supported instructions for lab CPU is extremely limited, so it may only be able to run some basic C programs.
 ```java
