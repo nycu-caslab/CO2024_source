@@ -60,24 +60,24 @@ There are no restrictions about the implementation of your cache, and there are 
 ```c
 ├── lab5
 │   ├── includes
-│   │   ├── Block.h
-│   │   ├── Cache.h
-│   │   ├── CacheManager.h
-│   │   ├── Evaluator.h
-│   │   └── Memory.h
+│   │   ├── Block.h             // the basic unit of cache
+│   │   ├── Cache.h             // maintains a vector of block
+│   │   ├── CacheManager.h      // maintains a cache and descirbe cache policy
+│   │   ├── Evaluator.h         // evaluates cache manager
+│   │   └── Memory.h            // the abstraction of physical memory
 │   ├── Makefile
-│   ├── process.py
+│   ├── process.py              // convert a serial of memory address to memory operation ( Trace.txt -> testcase.txt )
 │   ├── sample
-│   │   ├── CacheManager.cpp
-│   │   └── CacheManager.h
-│   ├── src
+│   │   ├── CacheManager.cpp    // LRU sample
+│   │   └── CacheManager.h      // LRU sample
+│   ├── src                      
 │   │   ├── Block.cpp
 │   │   ├── Cache.cpp
 │   │   ├── CacheManager.cpp
 │   │   ├── Evaluator.cpp
 │   │   ├── main.cpp
 │   │   └── Memory.cpp
-│   ├── testcase.txt
+│   ├── testcase.txt            // contains a serial of read write memory operation log
 │   └── Trace.txt
 ```
 
