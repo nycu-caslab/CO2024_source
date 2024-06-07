@@ -32,7 +32,7 @@ These four labs cover some fundamental concepts of CPUs. We will start with the 
 During the implementation of the branch, we will introduce a forwarding unit and hazard detection.
 
 We will provide the following template to serve as a reference for the implementation of these four labs.
-```c
+```java
 ├── lab1
 │   ├── Adder.v
 │   ├── ALUCtrl.v
@@ -86,7 +86,7 @@ There are no restrictions about the implementation of your cache, and there are 
 If you are interested in running C on your lab-4 CPU, you can use the kits we provide below and follow the steps and demonstrations shown in the [instructional video](https://drive.google.com/file/d/1nEIGAVXTM3-w0m5Q4jJV8ISoqoSjpM4X/view?usp=sharing).
 
 Please keep in mind that the supported instructions for lab CPU is extremely limited, so it may only be able to run some basic C programs.
-```c
+```java
 ├── COCPU
 │   ├── Bitstream
 │   │   ├── cpu_top.bin // try ".bin" if Tenagra fails programming ".bit"
