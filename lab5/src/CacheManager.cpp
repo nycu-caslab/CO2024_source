@@ -51,10 +51,7 @@ unsigned int CacheManager::read(unsigned int addr){
 
 void CacheManager::write(unsigned int addr, unsigned value){
     // TODO:: write value to addr
-    unsigned int index_bit = int(log2(cache->get_len()));
-    unsigned int index = (addr >> 2) % cache->get_len(); 
-    unsigned int tag = addr >> index_bit >> 2;
-
+    auto [index, tag] = directed_map(addr);
     if((*cache)[index].tag == tag)
         (*cache)[index][0] = value;
     memory->write(addr, value);
