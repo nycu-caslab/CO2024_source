@@ -13,6 +13,10 @@ CacheManager::CacheManager(Memory *memory, Cache *cache){
     tag_bits = 32 - log2(cache->get_len()) - 2;
 };
 
+CacheManager::~CacheManager(){
+
+};
+
 unsigned int CacheManager::read(unsigned int addr){
     // TODO:: implement replacement policy and return value 
     unsigned int index_bit = int(log2(cache->get_len()));
