@@ -12,11 +12,20 @@ void Evaluator::run(){
     Memory mem;
     Cache cache(cache_size);
     CacheManager cache_manager(&mem, &cache);
-    unsigned int tag_bits = 32 - log2(cache.get_len()) - log2(cache.get_size()/cache.get_len());
     std::ifstream infile(filepath);
     std::string line;
 
+    std::cout << "cache total_size : " << cache.get_size() << std::endl; 
+    std::cout << "cache entry_size : " << cache.get_size()/cache.get_len() << std::endl;
+    std::cout << "cache length     : " << cache.get_len() << std::endl; 
+    std::cout << "block total_size : " << cache.get_size()/cache.get_len() << std::endl; 
+    std::cout << "block entry_size : " << cache.get_size()/cache.get_len()/cache[0].len << std::endl; 
+    std::cout << "block length     : " << cache[0].len << std::endl; 
+
+
     int op_cnt = 0, miss_cnt = 0;
+    int read_req = 0;
+    int write_req = 0;
     while(std::getline(infile, line)){
         std::istringstream iss(line);
         std::string word;
@@ -24,45 +33,70 @@ void Evaluator::run(){
         iss >> rw >> word;
         unsigned int addr = std::stoul(word, nullptr, 16);
         if(rw == 'r'){
-            unsigned int pread, read, pwrite, write;
-            mem.getUsage(pread, pwrite);
+            read_req++;
 
-            unsigned int target_tag = addr >> (32 - tag_bits); // get the leftmost bits as tag; 
-            bool expected_hit = 0;
-            for(unsigned i=0; i<cache.get_len(); ++i){
-                if(cache[i].tag == target_tag){
-                    expected_hit = 1;
-                    break;
-                }
+            auto before_find_usage = mem.getUsage();
+            auto expected_hit      = cache_manager.find(addr) != nullptr;
+            auto after_find_usage  = mem.getUsage();
+            
+            if(before_find_usage != after_find_usage){
+                std::cerr << "You can't access memory in find function!" << std::endl;
+                return ;
             }
 
             unsigned int gt = golden.read(addr);
+
+            auto [before_read, before_write] = mem.getUsage();
             unsigned int value = cache_manager.read(addr);
-            mem.getUsage(read, write);
+            auto [after_read, after_write] = mem.getUsage();
 
             if(gt != value){
                 std::cerr << "Wrong read, expect: " << std::hex << gt << " received: " << value  << " at(" << addr << ")" << std::endl;
                 return ;
             }
-            else if(expected_hit == 0 && pread == read){
+            
+            if(expected_hit == 0 && before_read == after_read){
                 std::cerr << "Expect a read miss at(" << std::hex << addr << ") however you didn't read memory. Do you store data in cache correctly?" << std::endl;
                 return ;
             }
-            miss_cnt += !expected_hit;
+
+            miss_cnt += (expected_hit == 0);
         }
         else if(rw == 'w'){
+            write_req++;
             iss >> word;
             unsigned int value = std::stoul(word, nullptr, 16);
 
+            auto before_find_usage = mem.getUsage();
+            auto expected_hit      = cache_manager.find(addr) != nullptr;
+            auto after_find_usage  = mem.getUsage();
+            if(before_find_usage != after_find_usage){
+                std::cerr << "You can't access memory in find function!" << std::endl;
+                return ;
+            }
+
+
+
             golden.write(addr, value);
+
+            auto before = mem.getUsage();
             cache_manager.write(addr, value);
+            auto after = mem.getUsage();
+
+            if(expected_hit == 0 && before == after){
+                std::cerr << "Expect a write miss at(" << std::hex << addr << ") however you did't access memory, Do you store data in cache correctly?" << std::endl;
+                return ;
+            }
+            miss_cnt += (expected_hit == 0);
+
         }
         op_cnt++;
     }
 
-    unsigned int read_cnt, write_cnt;
-    mem.getUsage(read_cnt, write_cnt);
-    std::cout << "reads: " << read_cnt << " writes: " << write_cnt << "\n";
+    auto [read_cnt, write_cnt] = mem.getUsage();
+    std::cout << "--- --- result --- ---\n";
+    std::cout << "read_reqs: " << read_req << " write_reqs: " << write_req << std::endl;
+    std::cout << "mem_reads: " << read_cnt << " mem_writes: " << write_cnt << "\n";
     std::cout << "miss: " << miss_cnt << "\n";
     return ;
 }

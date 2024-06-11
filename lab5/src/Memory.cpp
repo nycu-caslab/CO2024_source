@@ -37,10 +37,8 @@ void Memory::write(unsigned int addr, unsigned int data) {
     return ;
 };
 
-void Memory::getUsage(unsigned int &read_cnt, unsigned int &write_cnt) const{
-    read_cnt = impl->read_cnt;
-    write_cnt = impl->write_cnt;
-    return ;
+std::pair<unsigned, unsigned> Memory::getUsage() const{
+    return {impl->read_cnt, impl->write_cnt};
 };
 
 

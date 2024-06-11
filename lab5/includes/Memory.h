@@ -1,3 +1,4 @@
+#include <utility>
 #pragma once
 
 class Memory {
@@ -15,5 +16,5 @@ public:
     unsigned int read(unsigned int addr) const;
     // write data into addr
     void write(unsigned int addr, unsigned int data);
-    void getUsage(unsigned int &read_cnt, unsigned int &write_cnt) const;
+    std::pair<unsigned, unsigned> getUsage() const;
 };
