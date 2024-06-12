@@ -40,7 +40,7 @@ void Evaluator::run(){
             auto after_find_usage  = mem.getUsage();
             
             if(before_find_usage != after_find_usage){
-                std::cerr << "You can't access memory in find function!" << std::endl;
+                std::cerr << "You can't access memory in CacheManager.find()!" << std::endl;
                 return ;
             }
 
@@ -60,6 +60,11 @@ void Evaluator::run(){
                 return ;
             }
 
+            if(expected_hit == 1 && before_read != after_read){
+                std::cerr << "CacheManager.find() return addr " << std::hex << addr << " is in cache, however you access memory in later CacheManager.read()" << std::endl;
+                return ;
+            }
+
             miss_cnt += (expected_hit == 0);
         }
         else if(rw == 'w'){
@@ -75,8 +80,6 @@ void Evaluator::run(){
                 return ;
             }
 
-
-
             golden.write(addr, value);
 
             auto before = mem.getUsage();
@@ -87,6 +90,7 @@ void Evaluator::run(){
                 std::cerr << "Expect a write miss at(" << std::hex << addr << ") however you did't access memory, Do you store data in cache correctly?" << std::endl;
                 return ;
             }
+
             miss_cnt += (expected_hit == 0);
 
         }
