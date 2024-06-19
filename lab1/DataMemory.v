@@ -154,13 +154,13 @@ module DataMemory(
 			end
 	end       
 
-	always @(memRead, address) begin
+	always @(*) begin
 		if(memRead) begin
 			/* verilator lint_off SYNCASYNCNET */
-			readData[31:24]   <= data_memory[address + 3];
-			readData[23:16]   <= data_memory[address + 2];
-			readData[15:8]    <= data_memory[address + 1];
-			readData[7:0]     <= data_memory[address];
+			readData[31:24]   = data_memory[address + 3];
+			readData[23:16]   = data_memory[address + 2];
+			readData[15:8]    = data_memory[address + 1];
+			readData[7:0]     = data_memory[address];
 		end
 	end
 
