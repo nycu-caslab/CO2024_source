@@ -162,6 +162,9 @@ module DataMemory(
 			readData[15:8]    = data_memory[address + 1];
 			readData[7:0]     = data_memory[address];
 		end
+		else begin
+			readData          = 32'b0;
+		end
 	end
 
 endmodule
