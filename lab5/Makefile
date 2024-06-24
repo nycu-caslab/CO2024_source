@@ -19,7 +19,7 @@ test: all
 all: $(EXE)
 
 $(EXE): $(OBJ)
-	$(GCC) $^ -o $@
+	$(GCC) $(CPPFLAGS) $^ -o $@
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
 	$(GCC) $(CPPFLAGS) -c $< -o $@
